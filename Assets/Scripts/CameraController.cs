@@ -1,27 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEngine.EventSystems.EventTrigger;
-using UnityEngine.UIElements;
 
 public class CameraController : MonoBehaviour
 {
-    public Transform transformPlayer;               // variable = transform del Player
-    //public float trackingSpeed = 2f;                // variable velocidad de seguimiento
-    public Vector2 margin = new Vector2(1, 1);      // varable margen = cuánto debe alejarse el Player del centro de la pantalla antes de que la cámara comience a seguirlo en esa dirección
-    public Vector2 smoothed = new Vector2(3, 3);   // variable para suavizar el movimiento de la cámara.
-    public CompositeCollider2D limitsForeground;    // variable para obtener los límites del Foreground
+    public Transform transformPlayer;
+    public Vector2 margin = new Vector2(1, 1);
+    public Vector2 smoothed = new Vector2(3, 3);
+    public Collider2D limitsForeground;
 
-    private Vector3 objetivo;                       // variable para indicar la posición a la que debe ir la cámara
+    private Vector3 velocity = Vector3.zero;
 
     void Start()
     {
-        // verifica si el Player y el límite del Foreground están asignados en el inspector
-        // si no, muestra mensajes de error en la consola
         if (transformPlayer == null)
         {
-            transformPlayer = GameObject.FindGameObjectWithTag("Player").transform;
+            transformPlayer = GameObject.FindGameObjectWithTag("Rodolfo").transform;
 
             if (transformPlayer == null)
             {
@@ -37,28 +29,42 @@ public class CameraController : MonoBehaviour
 
     void LateUpdate()
     {
-        // comprueba si el Player y los límites del Foreground no son nulos
         if (transformPlayer == null || limitsForeground == null)
             return;
 
-        // define variables que guardan la posición del jugador y ala cámara
-        Vector3 positionPlayer = transformPlayer.position;
-        Vector3 positionCamera = transform.position;
+        float clampedX = Mathf.Clamp(transformPlayer.position.x, limitsForeground.bounds.min.x + margin.x, limitsForeground.bounds.max.x - margin.x);
+        float clampedY = Mathf.Clamp(transformPlayer.position.y, limitsForeground.bounds.min.y + margin.y, limitsForeground.bounds.max.y - margin.y);
 
-        // calcula la posición objetivo de la cámara
-        Vector3 objetivo = new(positionPlayer.x, positionPlayer.y, positionCamera.z);
+        // Calcula la posición objetivo de la cámara centrada en el área del jugador
+        Vector3 targetPosition = new Vector3(clampedX, clampedY, transform.position.z);
 
-        // aplica suavizado al movimiento de la cámara
-        transform.position = Vector3.Lerp(positionCamera, objetivo, smoothed.x * Time.deltaTime);
+        // Calcula el desplazamiento adicional de la cámara en la dirección del jugador
+        Vector3 playerViewportPosition = Camera.main.WorldToViewportPoint(transformPlayer.position);
+        Vector3 additionalOffset = Vector3.zero;
 
-        // calcula los límites del Foreground
+        if (playerViewportPosition.x < margin.x)
+            additionalOffset.x = -margin.x;
+        else if (playerViewportPosition.x > 1 - margin.x)
+            additionalOffset.x = margin.x;
+
+        if (playerViewportPosition.y < margin.y)
+            additionalOffset.y = -margin.y;
+        else if (playerViewportPosition.y > 1 - margin.y)
+            additionalOffset.y = margin.y;
+
+        targetPosition += additionalOffset;
+
+        // Aplica suavizado al movimiento de la cámara
+        transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothed.x, Mathf.Infinity, Time.deltaTime);
+
+        // Calcula los límites del Foreground
         Vector2 minBound = limitsForeground.bounds.min;
         Vector2 maxBound = limitsForeground.bounds.max;
 
-        // limita la cámara dentro de los límites del CompositeCollider2D
+        // Limita la cámara dentro de los límites del Foreground
         transform.position = new Vector3(
-            Mathf.Clamp(transform.position.x, minBound.x, maxBound.x),
-            Mathf.Clamp(transform.position.y, minBound.y, maxBound.y),
+            Mathf.Clamp(transform.position.x, minBound.x + margin.x, maxBound.x - margin.x),
+            Mathf.Clamp(transform.position.y, minBound.y + margin.y, maxBound.y - margin.y),
             transform.position.z);
     }
 }

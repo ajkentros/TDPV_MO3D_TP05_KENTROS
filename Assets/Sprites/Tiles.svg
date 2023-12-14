@@ -9,8 +9,12 @@
    id="svg1"
    inkscape:version="1.3 (0e150ed6c4, 2023-07-21)"
    sodipodi:docname="Tiles.svg"
+   inkscape:export-filename="..\..\..\TDPV_MO3D_TP05_KENTROS 3D\Assets\Sprites\Cursor.png"
+   inkscape:export-xdpi="125.31"
+   inkscape:export-ydpi="125.31"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
   <sodipodi:namedview
@@ -24,8 +28,8 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
      inkscape:zoom="3.7795691"
-     inkscape:cx="222.90901"
-     inkscape:cy="163.5107"
+     inkscape:cx="180.31156"
+     inkscape:cy="202.40403"
      inkscape:window-width="1920"
      inkscape:window-height="1016"
      inkscape:window-x="-8"
@@ -34,7 +38,58 @@
      inkscape:current-layer="layer1"
      showgrid="false" />
   <defs
-     id="defs1" />
+     id="defs1">
+    <linearGradient
+       id="swatch8"
+       inkscape:swatch="solid">
+      <stop
+         style="stop-color:#082e4a;stop-opacity:1;"
+         offset="0"
+         id="stop8" />
+    </linearGradient>
+    <linearGradient
+       id="swatch7"
+       inkscape:swatch="solid">
+      <stop
+         style="stop-color:#082e4a;stop-opacity:1;"
+         offset="0"
+         id="stop7" />
+    </linearGradient>
+    <linearGradient
+       id="swatch6"
+       inkscape:swatch="solid">
+      <stop
+         style="stop-color:#092e49;stop-opacity:1;"
+         offset="0"
+         id="stop6" />
+    </linearGradient>
+    <linearGradient
+       id="swatch5"
+       inkscape:swatch="solid">
+      <stop
+         style="stop-color:#ff0000;stop-opacity:1;"
+         offset="0"
+         id="stop5" />
+    </linearGradient>
+    <linearGradient
+       id="swatch4"
+       inkscape:swatch="solid">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="0"
+         id="stop4" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#swatch4"
+       id="linearGradient8"
+       x1="37.929466"
+       y1="48.03434"
+       x2="54.862797"
+       y2="48.03434"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.97130454,0,0,0.97130473,1.7314703,1.7784741)" />
+  </defs>
   <g
      inkscape:label="Capa 1"
      inkscape:groupmode="layer"
@@ -71,6 +126,21 @@
        x="80.184677"
        y="23.104952"
        inkscape:export-filename="Objective.png"
+       inkscape:export-xdpi="95.937164"
+       inkscape:export-ydpi="95.937164" />
+    <path
+       style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:2.49998;paint-order:markers stroke fill"
+       d="m 21.396247,48.434454 v -8.466666 h 8.466668 8.466665 v 8.466666 -8.466666 L 29.862915,56.901121 21.396247,39.967788 Z"
+       id="path3"
+       inkscape:export-filename="..\..\..\TDPV_MO3D_TP05_KENTROS 3D\Assets\Sprites\Cursor.png"
+       inkscape:export-xdpi="95.937164"
+       inkscape:export-ydpi="95.937164"
+       sodipodi:nodetypes="ccccccccc" />
+    <path
+       style="fill:#092e49;fill-opacity:1;stroke:url(#linearGradient8);stroke-width:1.23647;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill"
+       d="m 38.947815,48.434455 v -7.848433 h 7.848433 7.84843 v 7.848433 7.848432 h -7.84843 -7.848433 z"
+       id="path4"
+       inkscape:export-filename="..\..\..\TDPV_MO3D_TP05_KENTROS 3D\Assets\Sprites\Objective.png"
        inkscape:export-xdpi="95.937164"
        inkscape:export-ydpi="95.937164" />
   </g>

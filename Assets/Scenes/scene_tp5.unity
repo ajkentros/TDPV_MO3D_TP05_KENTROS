@@ -2785,7 +2785,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.1, y: -3.84, z: -10}
+  m_LocalPosition: {x: -12.27, y: -3.06, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2805,7 +2805,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transformPlayer: {fileID: 629639015}
   margin: {x: 1, y: 1}
-  smoothed: {x: 4, y: 4}
+  smoothed: {x: 1, y: 1}
   limitsForeground: {fileID: 107642860}
 --- !u!1 &583717601
 GameObject:
